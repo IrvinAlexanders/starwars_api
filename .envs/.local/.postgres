@@ -5,3 +5,5 @@ POSTGRES_PORT=5432
 POSTGRES_DB=starwars_api
 POSTGRES_USER=debug
 POSTGRES_PASSWORD=debug
+
+DATABASE_URL=postgresql://debug:debug@postgres:5432/starwars_api
