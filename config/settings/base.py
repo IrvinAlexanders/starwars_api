@@ -71,7 +71,7 @@ DJANGO_APPS = [
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
-
+    "strawberry.django",
 ]
 
 LOCAL_APPS = [
