@@ -7,6 +7,6 @@ hiredis==3.2.1  # https://github.com/redis/hiredis-py
 
 # Django
 # ------------------------------------------------------------------------------
-django==5.1.11  # pyup: < 5.2 # https://www.djangoproject.com/
+django==5.2.3  # pyup: < 5.2 # https://www.djangoproject.com/
 django-environ==0.12.0  # https://github.com/joke2k/django-environ
 django-redis==5.4.0  # https://github.com/jazzband/django-redis
