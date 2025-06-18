@@ -96,6 +96,12 @@ docker compose -f docker-compose.*.yml exec django coverage html
 
 Luego puedes descargar o revisar el archivo `htmlcov/index.html` generado.
 
+### Llenar la base de datos con datos iniciales ###
+
+```bash
+docker compose -f docker-compose.local.yml exec django python manage.py seed_data
+```
+
 ## Flujo de la Aplicación
 
 A continuación se muestra el flujo principal de la aplicación Star Wars GraphQL API:
@@ -108,6 +114,90 @@ Una vez que la aplicación está en funcionamiento, puedes acceder a la document
 
 Además, se ha generado documentación adicional utilizando Sphinx, enfocada en el código fuente y la arquitectura del proyecto. Esta documentación puede consultarse siguiendo las instrucciones de la sección de **Documentación** más arriba.
 
+En base a la prueba, acá hay un query y mutaciones de utilidad:
+
+### Consultar personaje y las péliculas en las que aparece
+```graphql
+query ListCharacters {
+  characters(name: "") {
+    edges {
+      node {
+        id
+        name
+        birthYear
+        gender
+        films {
+          title
+          openingCrawl
+          episodeId
+          director
+          producers
+          releaseDate
+          planets {
+            name
+            climate
+            population
+          }
+        }
+      }
+    }
+  }
+}
+```
+### Crear personaje
+```graphql
+mutation CreateCharacter {
+  createCharacter(input: {
+    name: "Leia Organa",
+    birthYear: "19BBY",
+    gender: "female"
+  }) {
+    id
+    name
+    birthYear
+    gender
+  }
+}
+```
+### Crear Planeta
+```graphql
+mutation CreatePlanet {
+  createPlanet(input: {
+    name: "Tatooine",
+    climate: "arid",
+    population: 200000
+  }) {
+    id
+    name
+    climate
+    population
+  }
+}
+```
+### Crear Película
+```graphql
+mutation CreateFilm {
+  createFilm(input: {
+    title: "A New Hope",
+    openingCrawl: "It is a period of civil war...",
+    director: "George Lucas",
+    episodeId: 4,
+    producers: "Gary Kurtz, Rick McCallum",
+    releaseDate: "1977-05-25",
+    characterIds: [1, 2],
+    planetIds: [1]
+  }) {
+    id
+    title
+    director
+    openingCrawl
+    releaseDate
+    planets {
+      name
+    }
+  }
+}
+```
 ## Reportes de calidad en desarrollo
 
 ### Ejemplo de reportes HTML
