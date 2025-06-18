@@ -11,8 +11,7 @@ Welcome to Star Wars GraphQL API's documentation!
    :caption: Contents:
 
    howto
-   users
-
+   core
 
 
 Indices and tables

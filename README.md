@@ -11,42 +11,113 @@ License: MIT
 
 Moved to [settings](https://cookiecutter-django.readthedocs.io/en/latest/1-getting-started/settings.html).
 
+## Github
+### Clonar el repositorio
+
+Puedes clonar este repositorio público utilizando cualquiera de los siguientes métodos:
+
+#### Usando SSH
+
+```bash
+git clone git@github.com:IrvinAlexanders/starwars_api.git
+```
+
+#### Usando HTTPS
+
+```bash
+git clone https://github.com/IrvinAlexanders/starwars_api.git
+```
+
+#### Usando GitHub CLI
+
+```bash
+gh repo clone IrvinAlexanders/starwars_api
+```
+
+Sigue las instrucciones de tu método preferido para obtener una copia local del proyecto.
+
+## Docker Usage
+
+Este proyecto incluye archivos de configuración para Docker Compose que facilitan el despliegue en diferentes entornos:
+
+### Entorno Local
+
+Para levantar el entorno de desarrollo local:
+
+```bash
+docker compose -f docker-compose.local.yml up --build
+```
+
+### Documentación
+
+Para generar y servir la documentación:
+
+```bash
+docker compose -f docker-compose.docs.yml up --build
+```
+
+La documentación estará disponible en [http://localhost:9000](http://localhost:7000) (ajusta el puerto si es necesario).
+
+### Producción
+
+Para desplegar en producción:
+
+```bash
+docker compose -f docker-compose.production.yml up --build -d
+```
+
+Asegúrate de configurar las variables de entorno necesarias antes de levantar los servicios en producción.
+
+Consulta cada archivo `docker-compose.*.yml` para más detalles y personalizaciones.
+
 ## Basic Commands
 
-### Setting Up Your Users
+### Configurar superusuario
 
-- To create a **superuser account**, use this command:
+Para crear una **cuenta de superusuario**, utiliza este comando:
 
-      $ python manage.py createsuperuser
+    $ docker compose -f docker-compose.*.yml exec django python manage.py createsuperuser
 
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
+Tienes que reemplazar `*` por el entorno ejecutado(local o production).
 
-### Type checks
+### Ejecutar pruebas unitarias ###
+Para ejecutar las pruebas con coverage y ver el reporte en la terminal, usa los siguientes comandos (reemplaza `*` por el entorno correspondiente, por ejemplo, `local` o `production`):
 
-Running type checks with mypy:
+```bash
+docker compose -f docker-compose.*.yml exec django coverage run manage.py test
+docker compose -f docker-compose.*.yml exec django coverage report
+```
 
-    $ mypy starwars_api
+Si deseas ver un reporte más detallado o generar un archivo HTML:
 
-### Test coverage
+```bash
+docker compose -f docker-compose.*.yml exec django coverage html
+```
 
-To run the tests, check your test coverage, and generate an HTML coverage report:
+Luego puedes descargar o revisar el archivo `htmlcov/index.html` generado.
 
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
+## Flujo de la Aplicación
 
-#### Running tests with pytest
+A continuación se muestra el flujo principal de la aplicación Star Wars GraphQL API:
 
-    $ pytest
+![Flujo de la aplicación](docs/images/starwarsapi-flow.png)
 
-### Live reloading and Sass CSS compilation
+## Documentación GraphQL
 
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally.html#using-webpack-or-gulp).
+Una vez que la aplicación está en funcionamiento, puedes acceder a la documentación interactiva de GraphQL proporcionada por Strawberry en la ruta `/graphql/`(Se ha documentado muy bien cada tipo, query y mutation para tener una buena documentación) en el puerto correspondiente. Ahí encontrarás detalles sobre los tipos, inputs y operaciones disponibles en la API.
 
-## Deployment
+Además, se ha generado documentación adicional utilizando Sphinx, enfocada en el código fuente y la arquitectura del proyecto. Esta documentación puede consultarse siguiendo las instrucciones de la sección de **Documentación** más arriba.
 
-The following details how to deploy this application.
+## Reportes de calidad en desarrollo
 
-### Docker
+### Ejemplo de reportes HTML
 
-See detailed [cookiecutter-django Docker documentation](https://cookiecutter-django.readthedocs.io/en/latest/3-deployment/deployment-with-docker.html).
+A continuación se muestran ejemplos de los reportes generados durante el desarrollo:
+
+#### Reporte de Coverage
+
+![Reporte de Coverage](docs/images/coverage-report.png)
+
+#### Reporte de Flake8
+
+![Reporte de Flake8](docs/images/flake8-report.png)
