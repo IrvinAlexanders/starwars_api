@@ -11,6 +11,31 @@ License: MIT
 
 Moved to [settings](https://cookiecutter-django.readthedocs.io/en/latest/1-getting-started/settings.html).
 
+## Github
+### Clonar el repositorio
+
+Puedes clonar este repositorio público utilizando cualquiera de los siguientes métodos:
+
+#### Usando SSH
+
+```bash
+git clone git@github.com:IrvinAlexanders/starwars_api.git
+```
+
+#### Usando HTTPS
+
+```bash
+git clone https://github.com/IrvinAlexanders/starwars_api.git
+```
+
+#### Usando GitHub CLI
+
+```bash
+gh repo clone IrvinAlexanders/starwars_api
+```
+
+Sigue las instrucciones de tu método preferido para obtener una copia local del proyecto.
+
 ## Docker Usage
 
 Este proyecto incluye archivos de configuración para Docker Compose que facilitan el despliegue en diferentes entornos:
@@ -76,3 +101,9 @@ Luego puedes descargar o revisar el archivo `htmlcov/index.html` generado.
 A continuación se muestra el flujo principal de la aplicación Star Wars GraphQL API:
 
 ![Flujo de la aplicación](docs/images/starwarsapi-flow.png)
+
+## Documentación GraphQL
+
+Una vez que la aplicación está en funcionamiento, puedes acceder a la documentación interactiva de GraphQL proporcionada por Strawberry en la ruta `/graphql/`(Se ha documentado muy bien cada tipo, query y mutation para tener una buena documentación) en el puerto correspondiente. Ahí encontrarás detalles sobre los tipos, inputs y operaciones disponibles en la API.
+
+Además, se ha generado documentación adicional utilizando Sphinx, enfocada en el código fuente y la arquitectura del proyecto. Esta documentación puede consultarse siguiendo las instrucciones de la sección de **Documentación** más arriba.
