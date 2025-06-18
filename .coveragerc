@@ -1,0 +1,13 @@
+[run]
+source = core
+omit =
+    */migrations/*
+    */tests/*
+    manage.py
+    */__init__.py
+
+[report]
+fail_under = 80
+
+[html]
+directory = coverage_html_report
