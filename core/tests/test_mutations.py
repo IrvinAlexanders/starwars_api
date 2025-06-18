@@ -12,6 +12,7 @@ def gql_client():
 
 @pytest.mark.django_db
 def test_create_character_mutation(gql_client):
+    # Arrange
     response = gql_client.query(
         """
         mutation CreateCharacter($input: CreateCharacterInput!) {
@@ -32,13 +33,17 @@ def test_create_character_mutation(gql_client):
         }
     )
 
+    # Act
     data = response.data["createCharacter"]
+
+    # Assert
     assert data["name"] == "Leia Organa"
     assert data["birthYear"] == "19BBY"
     assert data["gender"] == "female"
 
 @pytest.mark.django_db
 def test_create_planet_mutation(gql_client):
+    # Arrange
     response = gql_client.query(
         """
         mutation CreatePlanet($input: CreatePlanetInput!) {
@@ -59,7 +64,10 @@ def test_create_planet_mutation(gql_client):
         }
     )
 
+    # Act
     data = response.data["createPlanet"]
+
+    # Assert
     assert data["name"] == "Naboo"
     assert data["climate"] == "temperate"
     assert data["population"] == "4500000"
@@ -70,7 +78,6 @@ def test_create_film_mutation(gql_client):
     character = Character.objects.create(name="Han Solo")
     planet = Planet.objects.create(name="Endor", climate="temperate", population=30000)
 
-    # Act
     response = gql_client.query(
         """
         mutation CreateFilm($input: CreateFilmInput!) {
@@ -102,7 +109,10 @@ def test_create_film_mutation(gql_client):
         }
     )
 
+    # Act
     film = response.data["createFilm"]
+
+    # Assert
     assert film["title"] == "Return of the Jedi"
     assert film["episodeId"] == 6
     assert film["director"] == "Richard Marquand"
