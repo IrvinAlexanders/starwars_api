@@ -1,6 +1,6 @@
 import strawberry
-from strawberry.relay import Connection
-from typing import List
+from strawberry import relay
+from typing import List, Iterable
 
 from core.models import Film
 from core.graphql.types import FilmType
@@ -10,6 +10,11 @@ from core.graphql.types import FilmType
 class FilmQueries:
     """Queries for retrieving films from the Star Wars universe.
     """
-    @strawberry.django.field
-    def films(self) -> Connection[FilmType]:
-        return Connection.from_queryset(Film.objects.all())
+    @relay.connection(
+        relay.ListConnection[FilmType],
+        description="Retrieve a list of films from the Star Wars universe."
+    )
+    def films(self) -> Iterable[FilmType]:
+        queryset: List[Film] = Film.objects.all()
+
+        return queryset
