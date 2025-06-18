@@ -3,7 +3,7 @@ from django.db import models
 
 class Planet(models.Model):
     """Represents a planet in the Star Wars universe.
-    
+
     Attributes:
         name (CharField): The name of the planet.
         climate (CharField): The climate of the planet (can be blank).

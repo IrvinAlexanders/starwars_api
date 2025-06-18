@@ -12,7 +12,7 @@ class CharacterQueries:
     """Queries for retrieving characters from the Star Wars universe.
     """
     @relay.connection(
-        relay.ListConnection[CharacterType], 
+        relay.ListConnection[CharacterType],
         description=constants.CHARACTER_QUERY_DESCRIPTION
     )
     def characters(self, name: str | None = None) -> Iterable[CharacterType]:

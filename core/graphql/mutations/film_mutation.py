@@ -36,13 +36,12 @@ class CreateFilmInput:
         default_factory=list,
         description="List of planet IDs associated with the film."
     )
-    
 
 
 @strawberry.type
 class FilmMutations:
     """Mutations for creating and updating films in the Star Wars universe.
-    This class contains methods for creating a new film.    
+    This class contains methods for creating a new film.
     """
     @strawberry.mutation
     def create_film(self, input: CreateFilmInput) -> FilmType:

@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .character import * # NoQA: F401, F403
-from .film import * # NoQA: F401, F403
-from .planet import * # NoQA: F401, F403
+from .character import Character
+from .film import Film
+from .planet import Planet
 
 
 admin.site.register(Character)

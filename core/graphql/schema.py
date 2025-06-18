@@ -25,12 +25,13 @@ class Mutation(
     PlanetMutations,
 ):
     """Root mutation type for the Star Wars GraphQL API.
-    This class aggregates all the mutation types for creating and updating characters, films, and planets.
+    This class aggregates all the mutation types for creating and updating characters,
+    films, and planets.
     """
     pass
 
 
 schema = strawberry.Schema(
-    query=Query, 
+    query=Query,
     mutation=Mutation
 )

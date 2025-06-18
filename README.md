@@ -107,3 +107,17 @@ A continuación se muestra el flujo principal de la aplicación Star Wars GraphQ
 Una vez que la aplicación está en funcionamiento, puedes acceder a la documentación interactiva de GraphQL proporcionada por Strawberry en la ruta `/graphql/`(Se ha documentado muy bien cada tipo, query y mutation para tener una buena documentación) en el puerto correspondiente. Ahí encontrarás detalles sobre los tipos, inputs y operaciones disponibles en la API.
 
 Además, se ha generado documentación adicional utilizando Sphinx, enfocada en el código fuente y la arquitectura del proyecto. Esta documentación puede consultarse siguiendo las instrucciones de la sección de **Documentación** más arriba.
+
+## Reportes de calidad en desarrollo
+
+### Ejemplo de reportes HTML
+
+A continuación se muestran ejemplos de los reportes generados durante el desarrollo:
+
+#### Reporte de Coverage
+
+![Reporte de Coverage](docs/images/coverage-report.png)
+
+#### Reporte de Flake8
+
+![Reporte de Flake8](docs/images/flake8-report.png)

@@ -10,13 +10,15 @@ class Film(models.Model):
     Attributes:
         title (CharField): The title of the film.
         episode_id (IntegerField): The episode number of the film.
-        opening_crawl (TextField): The opening crawl text shown at the beginning of the film.
+        opening_crawl (TextField): The opening crawl text shown at the
+        beginning of the film.
         director (CharField): The name of the film's director.
         producers (CharField): A comma-separated list of the film's producers.
         release_date (DateField): The release date of the film.
         planets (ManyToManyField): The planets featured in the film.
     Methods:
-        __str__(): Returns a string representation of the film in the format "Episode {episode_id}: {title}".
+        __str__(): Returns a string representation of the film in the format
+        "Episode {episode_id}: {title}".
     """
 
     title = models.CharField(max_length=150)

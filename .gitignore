@@ -96,6 +96,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# Flake8
+flake8-report/
+
 # nyc test coverage
 .nyc_output
 

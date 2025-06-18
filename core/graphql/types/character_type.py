@@ -1,5 +1,4 @@
 import strawberry
-from strawberry import ID
 from strawberry.relay import Node
 from typing import Optional, ForwardRef
 
@@ -7,7 +6,6 @@ from core.models import Character, Film, Planet
 
 
 FilmTypeRef = ForwardRef("FilmType")
-PlanetType = ForwardRef("PlanetType")
 
 
 @strawberry.django.type(Planet)
@@ -44,7 +42,8 @@ class FilmType(Node):
         director (str): The name of the film's director.
         producers (str): A comma-separated list of the film's producers.
         release_date (str): The release date of the film.
-        planets (list[PlanetType]): The planets featured in the film, represented as a list of PlanetType objects.
+        planets (list[PlanetType]): The planets featured in the film,
+        represented as a list of PlanetType objects.
     """
     title: str = strawberry.field(description="The title of the film.")
     episode_id: int = strawberry.field(description="The episode number of the film.")
@@ -61,6 +60,7 @@ class FilmType(Node):
     def planets(self) -> list["PlanetType"]:
         return self.planets.all()
 
+
 @strawberry.django.type(Character)
 class CharacterType(Node):
     """Represents a character from the Star Wars universe.
@@ -70,7 +70,8 @@ class CharacterType(Node):
         name (str): The name of the character.
         birth_year (str | None): The birth year of the character, can be
         gender (str | None): The gender of the character, can be blank or null.
-        films (list[FilmType]): The films in which this character appears, represented as a
+        films (list[FilmType]): The films in which this character appears,
+        represented as a
         list of FilmType objects.
     """
     name: str = strawberry.field(description="The name of the character.")
@@ -81,7 +82,9 @@ class CharacterType(Node):
         description="The gender of the character, can be blank or null."
     )
 
-    @strawberry.django.field(description="Returns the films in which this character appears.")
+    @strawberry.django.field(
+        description="Returns the films in which this character appears."
+    )
     def films(self) -> list["FilmType"]:
         """Returns the films in which this character appears."""
         return self.films.all()
