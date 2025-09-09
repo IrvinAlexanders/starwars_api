@@ -7,4 +7,4 @@ psycopg2-binary==2.9.10  # https://github.com/psycopg/psycopg
 
 # Django
 # ------------------------------------------------------------------------------
-django-anymail==13.0  # https://github.com/anymail/django-anymail
+django-anymail==13.1  # https://github.com/anymail/django-anymail
