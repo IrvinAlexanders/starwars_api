@@ -11,4 +11,4 @@ strawberry-graphql-django==0.62.0  # https://pypi.org/project/strawberry-graphql
 # ------------------------------------------------------------------------------
 django==5.1.11  # pyup: < 5.2 # https://www.djangoproject.com/
 django-environ==0.12.0  # https://github.com/joke2k/django-environ
-django-redis==5.4.0  # https://github.com/jazzband/django-redis
+django-redis==6.0.0  # https://github.com/jazzband/django-redis
